@@ -222,6 +222,12 @@ header #menu{
     object-fit: cover;
 }
 
+.course .box-container .box video{
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+}
+
 .course .box-container .box .content{
     padding: 1rem;
 }
