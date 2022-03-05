@@ -11,12 +11,12 @@ class Courses(models.Model):
     image = models.ImageField(blank=False)
     price = models.IntegerField(default=0)
     description = models.TextField(null=True,max_length=255, blank=True) #не обязвтельное поле
-    time = models.IntegerField(default=0)
-    term = models.IntegerField(default=0)
-    modul = models.IntegerField(default=0)
+    time = models.IntegerField("длительность одного урока",default=0)
+    term = models.IntegerField("срок(в месяцах)",default=0)
+    modul = models.IntegerField("модуль",default=0)
     created_at = models.DateTimeField(auto_now_add=True)  
     update_at = models.DateTimeField(auto_now=True)
-    draft = models.BooleanField("Черновик", default=False)
+    draft = models.BooleanField("Опубликовать", default=False)
     
     def __str__(self):
         return self.name
