@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %} 
+
+<section>
+  <h1>Вход на сайт</h1>
+    {% if error %}
+        <div style="color:red;">{{ error }}</div>
+    {% endif %}
+<form method="post">
+  {% csrf_token %}
+    
+    <div class="imgcontainer">
+      <img src="{%static './images/school_30px.png' %}" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+      <label for="uname"><b>логин</b></label>
+      <input type="text" placeholder="введите логин" name="username" required>
+  
+      <label for="psw"><b>пароль</b></label>
+      <input type="password" placeholder="введите пароль" name="password" required>
+  
+      <button type="submit" class="signupbtn">войти</button>
+      <button type="submit" class="signupbtn"><a href="{% url 'register' %}">зарегистрироваться</a></button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember">запомнить
+      </label>
+    </div>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn1">отменить</button>
+      <span class="psw">забыли <a href="#">пароль?</a></span>
+    </div>
+  </form>
+
+</section>
+
+
+{% endblock %}

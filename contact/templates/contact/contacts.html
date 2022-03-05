@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %}   
+<section class="contact" id="contact">
+    <h1 class="heading">связаться с нами</h1>
+    <div class="row">
+        <form action="{% url 'contact_view' %}" method="post">
+            {% csrf_token %} 
+            <input type="text" name="name" placeholder="имя" class="box">
+            <input type="email" name="email" placeholder="email" class="box">
+            <input type="addres" name="addres" placeholder="ваш адрес" class="box">
+            <input type="number" name="telephone" placeholder="ваш номер" class="box">
+            <textarea name="description" placeholder="Описание" id="" cols="30" rows="10" class="box address" ></textarea>
+            <input type="submit" class="btn" value="отправить">
+        </form>
+
+        <!-- <div class="image">
+            <img src="../images/contact-img.png">    
+        </div> -->
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %}   
+<section class="course" id="course">
+    <h1 class="heading"></h1>
+    <div class="box-container">
+        {% for i in courses %}
+        <div class="box">
+            <img src="{{i.image.url}}" alt="">
+            <h3 class="price">{{i.price}} KGS</h3>
+            <div class="content" >
+                <div class="starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half"></i>
+                </div>
+                <!-- {% url 'course_detail' i.name %}-->
+                                   <a href="{{i.get_absolute_url}}" class="title">{{i.name}}</a> 
+                <p>{{i.description}}</p>
+                <div class="info">
+                    <h3><i class="far fa-clock"></i> {{i.time}} часов </h3>
+                    <h3><i class="far fa-calendar-alt"></i> {{i.term}} месяцев </h3>
+                    <h3><i class="far fa-book"></i> {{i.modul}} модуль </h3>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <!-- <div class="clearfix"><button class="signupbtn">Добавить курс</button></div> -->
+
+</section>
+
+{% endblock %}

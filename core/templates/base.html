@@ -1,0 +1,88 @@
+{% load static %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bilim.kg</title>
+    <!-- ccылка на гугл шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- cсылка на шрифт -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style1.css'%}">
+</head>
+<body>
+
+<header>
+    <div id="menu" class="fas fa-bars"></div>
+
+    <a href="{% url 'home_page' %}" class="logo"><i class="fas fa-user-graduate"> bilim</i></a>
+
+    <nav class = "navbar">
+        <ul>
+            <li><a class="" href="{% url 'home_page' %}">главный</a></li>
+            <li><a href="{% url 'about' %}">о нас</a></li>
+            <li><a href="{% url 'courses_list' %}">курсы</a></li>
+            <li><a href="{% url 'teachers' %}">преподаватели</a></li>
+            <li><a href="{% url 'contacts' %}">связаться</a></li>
+        </ul>
+    </nav>
+    <nav id="login" class ="login-form">
+       
+    <a href="{% url 'login' %}"><div id="login" class="fas fa-user-circle">
+        <span>{{ user.username }}</span>
+    </div></a>
+</header>
+<div >
+<div class="" >
+    {% block page %}
+    
+    {% endblock %}
+
+    {% for contact in page_obj %}
+    {# Each "contact" is a Contact model object. #}
+    {{ contact.full_name|upper }}<br>
+   
+{% endfor %}
+<!-- страница  {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}. -->
+</div>
+<div class="pagination"> 
+    
+        {% if page_obj.has_previous %}
+            <a href="?page=1">в начало</a>
+            <a href="?page={{ page_obj.previous_page_number }}"><</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">в конец</a>
+        {% endif %}
+</div>
+</div>
+<div class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>быстрые ссылки</h3>
+            <a href="{% url 'home_page' %}">главный</a>
+            <a href="{% url 'about' %}">о нас</a>
+            <a href="{% url 'courses_list' %}">курсы</a>
+            <a href="{% url 'teachers' %}">преподаватели</a>
+            <a href="{% url 'contacts' %}">связаться</a>
+        </div>
+        <div class="box">
+            {% for i in aboutus %}<h3>контакты</h3>
+            <p><i class="fas fa-map-marker-alt" > {{ i.addres }}</i></p>
+           <a href="mailto: {{ i.email }}"><p><i class="fas fa-envelope"></i> {{ i.email }}</p></a> 
+          <a href="tel: {{ i.telephone }}">  <p><i class="fas fa-phone"></i> {{ i.telephone }}</p> </a>
+            
+        </div>
+    </div>
+    <h1 class="credit">автор сайта<a href="#"> {{i.name}}</a> все права защищены.</h1>{% endfor %}
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/my.js'%}"></script>
+    
+</body>
+</html>

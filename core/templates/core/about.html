@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %}   
+<section class="about" id="about">
+
+    <div class="image">
+        <img src="{%static './images/Blog post-bro.svg' %}" alt="">
+    </div>
+    
+    <div class="content">
+
+        {% for i in aboutus %}
+       <h3>{{ i.header }}</h3>
+       <p> {{ i.description }} </p>
+           <a href="#"><button class="btn">выучить больше</button></a>
+           {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

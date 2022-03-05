@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %} 
+<section>
+    <form method="post" style="border:1px solid #ccc">
+      {% csrf_token %}
+        <div class="container">
+          <h1>Зарегистрироваться</h1>
+          <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
+          <hr>
+          <label for="username"><b>Имя</b></label>
+          <input type="text" placeholder="введите имя" name="username" required>
+
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="введите логин" name="email" required>
+      
+          <label for="password"><b>пароль</b></label>
+          <input type="password" placeholder="введите пароль" name="password" required>
+      
+          <label for="password2"><b>повторите пароль</b></label>
+          <input type="password" placeholder="повторите пароль" name="password2" required>
+      
+          <!-- <label for="photo"><b> Добавте фото </b></label>
+          <input type="file" name="photo" multiple accept="image/*,image/jpeg"><br><br> -->
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">запомнить
+          </label>
+           
+          <p>Создавая учетную запись, вы соглашаетесь с нашими<a href="#" style="color:dodgerblue"> Условия и конфиденциальность</a>.</p>
+      
+          <div class="clearfix">
+            <button type="button" class="cancelbtn">отменить</button>
+            <button type="submit" class="signupbtn">зарегистрироваться</button>
+          </div>
+        </div>
+      </form>
+
+</section>
+
+{% endblock %}

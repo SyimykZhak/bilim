@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %}  
+
+
+<section class="course" id="course">
+    <div class="box-container">{% for lesson in course.course_name.all  %}
+        <div class="box">
+            
+                    <video width="390" height="240" controls>
+                        <source src="{{lesson.videofile.url}}" type="video/mp4">
+                    </video>
+                    <div class="content" >
+                        <p>{{lesson.title}}</p>
+                        <p>{{lesson.description}}</p>
+                        <h1><a href="{{lesson.task}}" target="_blank">посмотреть заданию</a></h1>
+            </div>
+            </div>
+           {% endfor %}
+        </div>
+
+    
+</section>
+
+{% endblock %}

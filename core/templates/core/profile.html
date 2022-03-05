@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %} 
+<section>
+    <!-- <h1>Профиль пользователя</h1>
+    <h2>login: {{profile_1.user.username}}</h2>
+    <h2>ФИО - {{profile_1.user.get_full_name}}</h2>
+    <h2>Region - {{profile_1.region}}</h2>
+    <h2>Photo:<img src="{{profile_1.photo.url}}" height="100" width="200"></h2> -->
+
+    <h1>Имя пользователя: {{ user.username }} <br></h1>
+    <h1>Email: {{ user.email }}</h1>
+</section>
+
+{% endblock %}
