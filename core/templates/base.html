@@ -63,14 +63,14 @@
 </div>
 <div class="footer">
     <div class="box-container">
-        <div class="box">
+        <!-- <div class="box">
             <h3>быстрые ссылки</h3>
             <a href="{% url 'home_page' %}">главный</a>
             <a href="{% url 'about' %}">о нас</a>
             <a href="{% url 'courses_list' %}">курсы</a>
             <a href="{% url 'teachers' %}">преподаватели</a>
             <a href="{% url 'contacts' %}">связаться</a>
-        </div>
+        </div> -->
         <div class="box">
             {% for i in aboutus %}<h3>контакты</h3>
             <p><i class="fas fa-map-marker-alt" > {{ i.addres }}</i></p>

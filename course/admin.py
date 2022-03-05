@@ -8,7 +8,7 @@ class LessonsInline(admin.StackedInline):
     extra = 1
 
 @admin.register(Courses)
-class MovieAdmin(admin.ModelAdmin):
+class CoursesAdmin(admin.ModelAdmin):
     list_display =("name", "description", "draft")
     inlines = [LessonsInline]
     save_on_top = True
