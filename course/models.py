@@ -1,6 +1,26 @@
+from turtle import mode
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+
+class Teachers(models.Model):
+    name = models.CharField("Имя", max_length=100)
+    speciality = models.CharField("Специалность", max_length=20)
+    age = models.PositiveIntegerField("Возраст", default=0)
+    image = models.ImageField("Изображение")
+    description = models.TextField("Описание")
+
+    def __str__(self):
+        return self.name
+    
+    # def get_absolute_url(self):
+    #     return reverse('teacher_detail', kwargs={"slug": self.name})
+    
+    class Meta:
+        verbose_name = 'преподаватель'
+        verbose_name_plural = 'преподаватели'
+        ordering = ['name']
+
 
 class Courses(models.Model):
     user = models.ForeignKey(to=User, 
@@ -11,12 +31,14 @@ class Courses(models.Model):
     image = models.ImageField(blank=False)
     price = models.IntegerField(default=0)
     description = models.TextField(null=True,max_length=255, blank=True) #не обязвтельное поле
+    teacher = models.ManyToManyField(Teachers, verbose_name="преподаватель", related_name="course_teachers")
     time = models.IntegerField("длительность одного урока",default=0)
     term = models.IntegerField("срок(в месяцах)",default=0)
     modul = models.IntegerField("модуль",default=0)
     created_at = models.DateTimeField(auto_now_add=True)  
     update_at = models.DateTimeField(auto_now=True)
     draft = models.BooleanField("Опубликовать", default=False)
+
     
     def __str__(self):
         return self.name
@@ -47,17 +69,3 @@ class lessons(models.Model):
         ordering = ['title']
 
 
-# class Task(models.Model):
-#     name = models.CharField(max_length = 100, verbose_name="ФИО")
-#     cat = models.CharField(max_length=100,verbose_name="Курстун аталышы" )
-#     task_num = models.DecimalField(max_digits=5, decimal_places=0, verbose_name="Канчанчы сабак?" )
-#     media = models.FileField(upload_to='task/%Y/%m/%d/', verbose_name='Тапшырманын',  blank=True)
-
-#     def __str__(self):
-#         return self.cat
-
-#     class Meta:
-#         verbose_name = 'Тапшырма'
-#         verbose_name_plural = 'Тапшырмалар'
-#         ordering = ['cat']
-# Create your models here.

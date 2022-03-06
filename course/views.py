@@ -1,6 +1,7 @@
+from pyexpat import model
 from django.shortcuts import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView
-from .models import Courses, lessons
+from .models import Courses, Teachers, lessons
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -28,8 +29,10 @@ class CourseDetailView(LoginRequiredMixin,DetailView):
     slug_field = "name"
     
  
-class TeacherTemplateView(LoginRequiredMixin,TemplateView):
+class TeacherDetailView(LoginRequiredMixin,ListView):
+    model = Teachers
     template_name ='course/teachers.html'
+    context_object_name = "teachers"
     raise_exception = True
 
 class FilterLessonsView(LessonsFilter,ListView):

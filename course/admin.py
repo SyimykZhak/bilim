@@ -1,7 +1,5 @@
-from ast import ClassDef
-from pyexpat import model
 from django.contrib import admin
-from .models import Courses, lessons
+from .models import Courses, lessons, Teachers
 # Register your models here.
 class LessonsInline(admin.StackedInline):
     model = lessons
@@ -17,7 +15,7 @@ class CoursesAdmin(admin.ModelAdmin):
     
     fieldsets = (
         (None,{
-            "fields": ("name", "description")
+            "fields": ("name", "description", "teacher")
         }),
         (None,{
             "fields": (("term", "modul", "time"),)
@@ -36,5 +34,8 @@ class LessonsAdmin(admin.ModelAdmin):
     list_filter = ("course_name", "title")
     search_fields = ("title",)
 
-
+@admin.register(Teachers)
+class TeachersAdmin(admin.ModelAdmin):
+    list_display =["name", "speciality"]
+    
 # admin.site.register(lessons) 

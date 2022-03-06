@@ -2,12 +2,23 @@
 
 {% block page %}
 {% load static %}   
-
-<section class="teacher" id="teacher">
+<section class="course" id="course">
     <h1 class="heading">наши опытные менторы</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam repellendus a eum aperiam autem ex vel iusto sapiente reprehenderit fuga adipisci aliquid quibusdam accusantium commodi fugiat temporibus, dolor ratione vitae.</p>
-
-    <a href="#"><button class="btn">выучить больше</button></a>
+    <div class="box-container">
+        {% for i in teachers %}
+        <div class="box">
+            <img src="{{i.image.url}}" alt="">
+            <div class="content" >
+                <!-- {% url 'course_detail' i.name %}-->
+                                   <a href="" class="title">{{i.name}}</a> 
+                <p>{{i.description}}</p>
+                <div class="info">
+                    <h3>{{i.speciality}}</h3>
+                    <h3>{{i.age}} - лет</h3>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 </section>
-
 {% endblock %}
