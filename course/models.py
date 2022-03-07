@@ -1,4 +1,3 @@
-from turtle import mode
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -13,12 +12,12 @@ class Teachers(models.Model):
     def __str__(self):
         return self.name
     
-    # def get_absolute_url(self):
-    #     return reverse('teacher_detail', kwargs={"slug": self.name})
+    def get_absolute_url(self):
+        return reverse('teacher_detail', kwargs={'slug': self.name})
     
     class Meta:
-        verbose_name = 'преподаватель'
-        verbose_name_plural = 'преподаватели'
+        verbose_name = 'ментор'
+        verbose_name_plural = 'менторы'
         ordering = ['name']
 
 

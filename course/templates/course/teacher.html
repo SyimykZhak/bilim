@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{% load static %}  
+<!-- <section class="course" id="course">
+    {% for i in courses %}
+        <h1>перподаватель<a>{{i.teacher}}</a></h1>
+    {% endfor %}
+</section> -->
+<section class="course" id="course">
+    <div class="box-container">
+        <div class="box">
+            <img src="{{teacher.image.url}}" alt="">
+            <div class="content" >
+                <a href="" class="title">{{teacher.name}}</a> 
+                <div class="info">
+                    <h3>{{teacher.speciality}}</h3>
+                    <h3>{{teacher.age}} - лет</h3>
+                </div>
+                <p>{{teacher.description}}</p>
+                <p><h1> ментор в курсах: {% for course in teacher.course_teachers.all %}
+                       <a href="{{course.get_absolute_url}}" >{{course.name}}|</a>
+                        {%endfor%}</h1>
+                </p>
+            </div>
+        </div>
+        </div>
+</section>
+
+{% endblock %}

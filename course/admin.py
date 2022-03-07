@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Courses, lessons, Teachers
+from django.utils.safestring import mark_safe
 # Register your models here.
 class LessonsInline(admin.StackedInline):
     model = lessons
@@ -30,12 +31,17 @@ class CoursesAdmin(admin.ModelAdmin):
 
 @admin.register(lessons)
 class LessonsAdmin(admin.ModelAdmin):
-    list_display =["course_name","title", "description"]
+    list_display =["title", "course_name", "description"]
     list_filter = ("course_name", "title")
     search_fields = ("title",)
 
 @admin.register(Teachers)
 class TeachersAdmin(admin.ModelAdmin):
-    list_display =["name", "speciality"]
-    
+    list_display =["name", "age", "get_image"]
+    readonly_fields =("get_image",)
+
+    def get_image(self,obj):
+        return mark_safe(f'<img src={obj.image.url} width="50" height="50"')
+
+    get_image.short_description = "Изображение"
 # admin.site.register(lessons) 

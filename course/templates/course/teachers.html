@@ -10,12 +10,12 @@
             <img src="{{i.image.url}}" alt="">
             <div class="content" >
                 <!-- {% url 'course_detail' i.name %}-->
-                                   <a href="" class="title">{{i.name}}</a> 
-                <p>{{i.description}}</p>
+                                   <a href="{{i.get_absolute_url}}" class="title">  {{i.name}}</a> 
+                
                 <div class="info">
                     <h3>{{i.speciality}}</h3>
-                    <h3>{{i.age}} - лет</h3>
                 </div>
+              </p>
             </div>
         </div>
     {% endfor %}

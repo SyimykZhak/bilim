@@ -1,6 +1,6 @@
 from pyexpat import model
 from django.shortcuts import HttpResponse
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 from .models import Courses, Teachers, lessons
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -29,11 +29,11 @@ class CourseDetailView(LoginRequiredMixin,DetailView):
     slug_field = "name"
     
  
-class TeacherDetailView(LoginRequiredMixin,ListView):
+class TeacherDetailView(ListView):
     model = Teachers
     template_name ='course/teachers.html'
     context_object_name = "teachers"
-    raise_exception = True
+    
 
 class FilterLessonsView(LessonsFilter,ListView):
     def get_queryset(self):
@@ -41,3 +41,10 @@ class FilterLessonsView(LessonsFilter,ListView):
             Q(course_name__in=self.request.GET.getlist("course_name"))
             )
         return queryset 
+
+class TeacherView(LoginRequiredMixin,DetailView):
+    model = Teachers
+    template_name = 'course/teacher.html'
+    context_object_name = "teacher"
+    slug_field = "name"
+    raise_exception = True

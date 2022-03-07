@@ -1,4 +1,6 @@
 virtual_okno
 media
+__pycache__
 virtual_okno/
 media/
+__pycache__/

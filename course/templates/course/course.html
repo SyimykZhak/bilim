@@ -2,12 +2,14 @@
 
 {% block page %}
 {% load static %}  
-<!-- <section class="course" id="course">
-    {% for i in courses %}
-        <h1>перподаватель<a>{{i.teacher}}</a></h1>
-    {% endfor %}
-</section> -->
 <section class="course" id="course">
+    <!-- <div class="content">
+        ASCLJ
+        {% for i in course.course_name.all %}
+        <h1>перподаватель<a>{{i.teacher}}</a></h1>
+        <h1>{{i.description}}</h1>
+        {% endfor %}
+    </div> -->
     <div class="box-container">{% for lesson in course.course_name.all  %}
         <div class="box">
             
@@ -17,7 +19,7 @@
                     <div class="content" >
                         <p>{{lesson.title}}</p>
                         <p>{{lesson.description}}</p>
-                        
+                        <p>{{lesson.teacher}}</p>
                         <h1><a href="{{lesson.task}}" target="_blank">посмотреть заданиe</a></h1>     
             </div>
             </div>

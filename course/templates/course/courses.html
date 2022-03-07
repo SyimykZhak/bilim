@@ -20,10 +20,12 @@
                 <!-- {% url 'course_detail' i.name %}-->
                                    <a href="{{i.get_absolute_url}}" class="title">{{i.name}}</a> 
                 <p>{{i.description}}</p>
-                <h3>преподаватели:{% for teacher in i.teacher.all %}
-                {{teacher.name}}|
+
+                <h1>ментор:
+                    {% for teacher in i.teacher.all %}
+            <a href="{{teacher.get_absolute_url}}" >    {{teacher.name}}|</a>
                     {% endfor %}
-                </h3>
+                </h1>
                 <div class="info">
                     <h3><i class="far fa-clock"></i> {{i.time}} часов </h3>
                     <h3><i class="far fa-calendar-alt"></i> {{i.term}} месяцев </h3>
