@@ -3,13 +3,17 @@
 {% block page %}
 {% load static %}  
 <section class="course" id="course">
-    <!-- <div class="content">
-        ASCLJ
-        {% for i in course.course_name.all %}
-        <h1>перподаватель<a>{{i.teacher}}</a></h1>
-        <h1>{{i.description}}</h1>
-        {% endfor %}
-    </div> -->
+    <div class="content">
+        <br>
+        <h1>курс: {{course.name}}
+        </h1>
+        <h1>{{course.description}}</h1>
+        <h1>длительность курса {{course.term}} месяцев</h1>
+        <h1>ментор курса:{% for i in course.teacher.all %}
+         <a href="{{i.get_absolute_url}}">{{i.name}}</a> - [{{i.speciality}}]
+         <!-- <img src="{{i.image.url}}" alt=""> -->
+        {% endfor %}</h1>
+    </div>
     <div class="box-container">{% for lesson in course.course_name.all  %}
         <div class="box">
             

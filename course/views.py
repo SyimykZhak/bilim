@@ -27,13 +27,14 @@ class CourseDetailView(LoginRequiredMixin,DetailView):
     template_name = "course/course.html"
     context_object_name = "course"
     slug_field = "name"
+    paginate_by = 4
     
  
 class TeacherDetailView(ListView):
     model = Teachers
     template_name ='course/teachers.html'
     context_object_name = "teachers"
-    
+    paginate_by = 4
 
 class FilterLessonsView(LessonsFilter,ListView):
     def get_queryset(self):
