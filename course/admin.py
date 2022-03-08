@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import Courses, lessons, Teachers
 from django.utils.safestring import mark_safe
-# Register your models here.
+
+
 class LessonsInline(admin.StackedInline):
     model = lessons
     extra = 1
@@ -44,4 +45,5 @@ class TeachersAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.image.url} width="50" height="50"')
 
     get_image.short_description = "Изображение"
-# admin.site.register(lessons) 
+
+

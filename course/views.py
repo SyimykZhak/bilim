@@ -1,16 +1,8 @@
-from pyexpat import model
 from django.shortcuts import HttpResponse
 from django.views.generic import ListView, DetailView
-from .models import Courses, Teachers, lessons
-from django.db.models import Q
+from .models import Courses, Teachers
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class LessonsFilter:
-    def get_courses(self):
-        return Courses.objects.all()
-
-    def get_lessons(self):
-        return lessons.objects.filter(draft=False).values("course_name")
 
 def primer(request):
     return HttpResponse('primer')
@@ -20,6 +12,7 @@ class CourseListView(ListView):
     template_name = "course/courses.html"
     context_object_name = "courses"
     paginate_by = 2
+    
     
 
 class CourseDetailView(LoginRequiredMixin,DetailView):
@@ -36,12 +29,7 @@ class TeacherDetailView(ListView):
     context_object_name = "teachers"
     paginate_by = 4
 
-class FilterLessonsView(LessonsFilter,ListView):
-    def get_queryset(self):
-        queryset = lessons.objects.filter(
-            Q(course_name__in=self.request.GET.getlist("course_name"))
-            )
-        return queryset 
+
 
 class TeacherView(LoginRequiredMixin,DetailView):
     model = Teachers
