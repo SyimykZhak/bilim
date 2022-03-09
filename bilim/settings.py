@@ -80,22 +80,37 @@ WSGI_APPLICATION = 'bilim.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'NAME': 'bilim_db',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': 'postgres1',
+        'HOST': 'localhost',
+    }
+}
+
+
+
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bilim_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres1',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'bilim_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres1',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation

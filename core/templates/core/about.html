@@ -13,7 +13,7 @@
         {% for i in aboutus %}
        <h3>{{ i.header }}</h3>
        <p> {{ i.description }} </p>
-           <a href="#"><button class="btn">выучить больше</button></a>
+           <a href="{% url 'courses_list' %}"><button class="btn">выучить больше</button></a>
            {% endfor %}
     </div>
 
