@@ -14,4 +14,6 @@
 2.  Django >= 3
 3.  postgresql
 4.  MySql
+5.  Html+Css
+6.  JavaScript
 
